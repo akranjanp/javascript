@@ -1,0 +1,332 @@
+/*
+Theme Name: Shoptimizer Child
+Description: Child theme of Shoptimizer with custom product archive design
+Template: shoptimizer
+Version: 1.0.0
+*/
+
+@import url("../shoptimizer/style.css");
+
+/* Product Archive Custom Styles */
+.woocommerce ul.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.woocommerce ul.products li.product {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.woocommerce ul.products li.product:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.product-image-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.woocommerce ul.products li.product .attachment-woocommerce_thumbnail {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.woocommerce ul.products li.product:hover .attachment-woocommerce_thumbnail {
+    transform: scale(1.05);
+}
+
+.wishlist-icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.wishlist-icon:hover {
+    background: #fff;
+    transform: scale(1.1);
+}
+
+.wishlist-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: #666;
+    fill: none;
+    stroke-width: 2;
+}
+
+.wishlist-icon:hover svg {
+    stroke: #e74c3c;
+}
+
+.wishlist-icon.active svg {
+    fill: #e74c3c;
+    stroke: #e74c3c;
+}
+
+.product-details {
+    padding: 20px;
+}
+
+.woocommerce ul.products li.product .woocommerce-loop-product__title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+    text-decoration: none;
+}
+
+.woocommerce ul.products li.product .woocommerce-loop-product__title:hover {
+    color: #0073aa;
+}
+
+.product-description {
+    font-size: 14px;
+    color: #666;
+    margin: 0 0 12px 0;
+    line-height: 1.5;
+}
+
+.woocommerce ul.products li.product .price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 15px 0;
+}
+
+.woocommerce ul.products li.product .price del {
+    color: #999;
+    font-weight: 400;
+    margin-right: 8px;
+}
+
+.woocommerce ul.products li.product .price ins {
+    text-decoration: none;
+    color: #e74c3c;
+}
+
+.add_to_cart_button {
+    background: #e74c3c !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 12px 24px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    width: 100% !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    text-align: center !important;
+    cursor: pointer !important;
+}
+
+.add_to_cart_button:hover {
+    background: #c0392b !important;
+    transform: translateY(-1px);
+}
+
+.add_to_cart_button:active {
+    transform: translateY(0);
+}
+
+/* Loading state */
+.add_to_cart_button.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Sale badge */
+.woocommerce span.onsale {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #e74c3c;
+    color: white;
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    z-index: 2;
+}
+
+/* Out of stock styling */
+.woocommerce ul.products li.product.outofstock {
+    opacity: 0.7;
+}
+
+.woocommerce ul.products li.product.outofstock .product-image-wrapper::after {
+    content: 'Дууссан';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .woocommerce ul.products {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+    
+    .product-details {
+        padding: 15px;
+    }
+    
+    .woocommerce ul.products li.product .attachment-woocommerce_thumbnail {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .woocommerce ul.products {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .woocommerce ul.products li.product .attachment-woocommerce_thumbnail {
+        height: 180px;
+    }
+}
+
+/* Notification Styles */
+.custom-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    z-index: 10000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    max-width: 300px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.custom-notification.show {
+    transform: translateX(0);
+}
+
+.custom-notification.notification-success {
+    background: #27ae60;
+}
+
+.custom-notification.notification-error {
+    background: #e74c3c;
+}
+
+.custom-notification.notification-info {
+    background: #3498db;
+}
+
+/* Quick View Modal */
+.quick-view-modal {
+    display: none;
+    position: fixed;
+    z-index: 10001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.quick-view-modal.show {
+    display: flex;
+    opacity: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.quick-view-modal .modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.quick-view-modal.show .modal-content {
+    transform: scale(1);
+}
+
+.quick-view-modal .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.quick-view-modal .close:hover {
+    color: #000;
+}
+
+/* Animation for product sorting */
+.woocommerce ul.products.sorting {
+    opacity: 0.5;
+    transition: opacity 0.5s ease;
+}
+
+/* Loading state for wishlist button */
+.wishlist-icon.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.wishlist-icon.loading svg {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Zoom effect for product images */
+.zoom-effect {
+    transform: scale(1.05) !important;
+}
