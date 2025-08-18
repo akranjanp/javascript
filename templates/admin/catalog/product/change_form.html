@@ -1,0 +1,14 @@
+{% extends "admin/change_form.html" %}
+{% load i18n static %}
+
+{% block object-tools-items %}
+  {{ block.super }}
+  {% if original.pk and original.product_type == 'variable' %}
+    <li>
+      <a class="historylink" href="{% url 'admin:catalog_product_generate_variations' original.pk %}">
+        {% trans "Generate variations" %}
+      </a>
+    </li>
+  {% endif %}
+{% endblock %}
+
